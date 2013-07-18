@@ -1,0 +1,14 @@
+# Adds SSL/TLS configuration
+
+dn: cn=config
+changetype: modify
+add: olcTLSCACertificateFile
+olcTLSCACertificateFile: /path/to/cafile
+-
+changetype: modify
+add: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /path/to/keyfile
+-
+changetype: modify
+add: olcTLSCertificateFile
+olcTLSCertificateFile: /path/to/certfile

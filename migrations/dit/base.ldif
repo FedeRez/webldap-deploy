@@ -1,0 +1,16 @@
+# The database root
+
+dn: dc=federez,dc=net
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+o: FedeRez
+dc: federez
+
+# Creates admin user (see cn=config)
+dn: cn=admin,dc=federez,dc=net
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP administrator
+userPassword:: BASE64_ENCODED_PASSWORD

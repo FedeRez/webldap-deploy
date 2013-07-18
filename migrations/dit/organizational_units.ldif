@@ -1,0 +1,49 @@
+# Adds DIT OUs.
+
+# FedeRez associations
+dn: ou=associations,dc=federez,dc=net
+objectClass: organizationalUnit
+ou: policies
+description: Contient les différentes politiques d'administration de l'annuaire
+
+# Groups
+dn: ou=groups,dc=federez,dc=net
+objectClass: organizationalUnit
+ou: groups
+description: Groupes d'utilisateurs
+
+# Technical users groupes
+dn: ou=services,ou=groups,dc=federez,dc=net
+objectClass: organizationalUnit
+ou: policies
+description: Groupes de comptes techniques
+
+# Access groups
+dn: ou=accesses,ou=groups,dc=federez,dc=net
+objectClass: organizationalUnit
+ou: policies
+description: Groupes de comptes techniques
+
+# Users
+dn: ou=users,dc=federez,dc=net
+objectClass: organizationalUnit
+ou: users
+description: Utilisateurs de l'annuaire
+
+# Roles (RBAC)
+dn: ou=roles,dc=federez,dc=net
+objectClass: organizationalUnit
+ou: policies
+description: Les différents droits pour la gestion RBAC
+
+# Technical users
+dn: ou=service-users,dc=federez,dc=net
+objectClass: organizationalUnit
+ou: policies
+description: Utilisateurs techniques de l'annuaire
+
+# Policies
+dn: ou=policies,dc=federez,dc=net
+objectClass: organizationalUnit
+ou: policies
+description: Contient les différentes politiques d'administration de l'annuaire
