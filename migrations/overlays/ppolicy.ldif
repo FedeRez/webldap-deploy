@@ -1,0 +1,41 @@
+# Webldap-deploy
+# Overlay: PPolicy
+
+dn: cn=module{0},cn=config
+changetype: modify
+add: olcModuleLoad
+olcModuleLoad: ppolicy.la
+
+dn: olcOverlay=ppolicy,olcDatabase={1}hdb,cn=config
+changetype: add
+objectClass: olcOverlayConfig
+objectClass: olcPPolicyConfig
+olcOverlay: {2}PPolicy
+olcPPolicyDefault: cn=passwords,ou=policies,dc=federez,dc=net
+olcPPolicyHashCleartext: TRUE
+olcPPolicyUseLockout: TRUE
+olcPPolicyForwardUpdates: FALSE
+
+dn: cn=passwords,ou=policies,dc=federez,dc=net
+changetype: add
+objectClass: pwdPolicy
+objectClass: pwdPolicyChecker
+objectClass: person
+objectClass: top
+# pwdCheckModule: check_password.so
+pwdAllowUserChange: TRUE
+pwdAttribute: 2.5.4.35
+pwdCheckQuality: 2
+pwdExpireWarning: 600
+pwdFailureCountInterval: 30
+pwdGraceAuthNLimit: 5
+pwdInHistory: 0
+pwdLockout: FALSE
+pwdLockoutDuration: 0
+pwdMaxAge: 0
+pwdMaxFailure: 5
+pwdMinAge: 0
+pwdMinLength: 8
+pwdMustChange: TRUE
+pwdSafeModify: FALSE
+sn: Passwords Policy
