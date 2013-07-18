@@ -1,4 +1,3 @@
-# Webldap-deploy
 # Overlay: Refint
 
 dn: cn=module{0},cn=config
