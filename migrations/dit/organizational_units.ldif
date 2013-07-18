@@ -3,7 +3,7 @@
 # FedeRez associations
 dn: ou=associations,dc=federez,dc=net
 objectClass: organizationalUnit
-ou: policies
+ou: associations
 description: Contient les différentes politiques d'administration de l'annuaire
 
 # Groups
@@ -15,13 +15,13 @@ description: Groupes d'utilisateurs
 # Technical users groupes
 dn: ou=services,ou=groups,dc=federez,dc=net
 objectClass: organizationalUnit
-ou: policies
+ou: services
 description: Groupes de comptes techniques
 
 # Access groups
 dn: ou=accesses,ou=groups,dc=federez,dc=net
 objectClass: organizationalUnit
-ou: policies
+ou: accesses
 description: Groupes de comptes techniques
 
 # Users
@@ -33,13 +33,13 @@ description: Utilisateurs de l'annuaire
 # Roles (RBAC)
 dn: ou=roles,dc=federez,dc=net
 objectClass: organizationalUnit
-ou: policies
+ou: roles
 description: Les différents droits pour la gestion RBAC
 
 # Technical users
 dn: ou=service-users,dc=federez,dc=net
 objectClass: organizationalUnit
-ou: policies
+ou: service-users
 description: Utilisateurs techniques de l'annuaire
 
 # Policies
