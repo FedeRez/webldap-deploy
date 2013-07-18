@@ -7,6 +7,7 @@ objectClass: pwdPolicy
 objectClass: pwdPolicyChecker
 objectClass: person
 objectClass: top
+# If needed
 # pwdCheckModule: check_password.so
 pwdAllowUserChange: TRUE
 pwdAttribute: 2.5.4.35

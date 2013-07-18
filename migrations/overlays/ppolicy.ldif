@@ -1,9 +1,9 @@
 # Overlay: PPolicy
 
-#dn: cn=module{0},cn=config
-#changetype: modify
-#add: olcModuleLoad
-#olcModuleLoad: ppolicy.la
+dn: cn=module{0},cn=config
+changetype: modify
+add: olcModuleLoad
+olcModuleLoad: ppolicy.la
 
 dn: olcOverlay=ppolicy,olcDatabase={1}hdb,cn=config
 changetype: add
@@ -14,4 +14,3 @@ olcPPolicyDefault: cn=passwords,ou=policies,dc=federez,dc=net
 olcPPolicyHashCleartext: TRUE
 olcPPolicyUseLockout: TRUE
 olcPPolicyForwardUpdates: FALSE
-
