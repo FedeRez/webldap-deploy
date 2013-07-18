@@ -1,0 +1,26 @@
+# Addes password policies to ou=policies,dc=federez,dc=net
+
+# First policy (the only one at the moment)
+dn: cn=passwords,ou=policies,dc=federez,dc=net
+changetype: add
+objectClass: pwdPolicy
+objectClass: pwdPolicyChecker
+objectClass: person
+objectClass: top
+# pwdCheckModule: check_password.so
+pwdAllowUserChange: TRUE
+pwdAttribute: 2.5.4.35
+pwdCheckQuality: 2
+pwdExpireWarning: 600
+pwdFailureCountInterval: 30
+pwdGraceAuthNLimit: 5
+pwdInHistory: 0
+pwdLockout: FALSE
+pwdLockoutDuration: 0
+pwdMaxAge: 0
+pwdMaxFailure: 5
+pwdMinAge: 0
+pwdMinLength: 8
+pwdMustChange: TRUE
+pwdSafeModify: FALSE
+sn: Passwords Policy
