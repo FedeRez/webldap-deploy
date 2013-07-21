@@ -1,0 +1,2 @@
+slapd shared/organization string FedeRez
+slapd slapd/domain string federez.net
