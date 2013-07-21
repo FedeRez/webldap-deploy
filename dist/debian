@@ -2,5 +2,5 @@
 
 install_ldap() {
     sudo debconf-set-selections ./dist/debconf
-    sudo apt-get install slapd ldap-utils
+    sudo apt-get install -y slapd ldap-utils
 }
