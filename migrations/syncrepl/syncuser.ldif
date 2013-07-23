@@ -1,0 +1,7 @@
+dn: cn=sync,ou=service-users,dc=federez,dc=net
+changetype: add
+objectClass: applicationProcess
+objectClass: simpleSecurityObject
+cn: sync
+description: OpenLDAP syncrepl user
+userPassword:: BASE64_ENCODED_PASSWORD

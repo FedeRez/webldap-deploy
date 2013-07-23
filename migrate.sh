@@ -1,5 +1,7 @@
 #!/bin/bash
 
+role=$1
+
 . ./dist/debian
 
 install_ldap
@@ -26,3 +28,17 @@ ldapmodify -D "cn=admin,dc=federez,dc=net" -W -H ldapi:/// -f ./migrations/overl
 
 sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f ./migrations/overlays/unique.ldif
 sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f ./migrations/overlays/refint.ldif
+
+ldapadd -D "cn=admin,dc=federez,dc=net" -W -H ldapi:/// -f ./migrations/syncrepl/syncuser.ldif
+
+case "$role" in
+    provider)
+        sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ./migrations/syncrepl/provider.ldif
+        ;;
+    consumer)
+        sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ./migrations/syncrepl/consumer.ldif
+        ;;
+    *)
+        echo "Error: First argument must be consumer or provider"
+        exit 1
+esac

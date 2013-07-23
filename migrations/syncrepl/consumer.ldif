@@ -1,0 +1,36 @@
+dn: olcDatabase={1}hdb,cn=config
+changetype: modify
+replace: olcRootDN
+olcRootDN: cn=manager
+-
+# No admin access (read-only database)
+delete: olcRootPW
+-
+add: olcDbIndex
+olcDbIndex: entryCSN eq
+-
+add: olcDbIndex
+olcDbIndex: entryUUID eq
+-
+add: olcDbIndex
+olcDbIndex: uid eq
+-
+add: olcDbIndex
+olcDbIndex: cn eq
+-
+add: olcDbIndex
+olcDbIndex: ou eq
+-
+add: olcDbIndex
+olcDbIndex: dc eq
+-
+add: olcSyncrepl
+olcSyncrepl: rid=000
+  provider="ldap://ldap.federez.net/"
+  type=refreshAndPersist
+  retry="60 30 300 +"
+  searchbase="dc=federez,dc=net"
+  bindmethod=simple
+  binddn="cn=sync,ou=service-users,dc=federez,dc=net"
+  credentials=secret
+  tls_reqcert=demand
