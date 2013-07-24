@@ -9,4 +9,4 @@ dn: cn={id},ou=roles,dc=federez,dc=net
 objectClass: organizationalRole
 cn: {id}
 roleOccupant: {occupant}
-displayName: {name}
+description: {description}
