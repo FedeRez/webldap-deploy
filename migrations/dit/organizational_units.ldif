@@ -24,6 +24,12 @@ objectClass: organizationalUnit
 ou: accesses
 description: Groupes de comptes techniques
 
+# POSIX groups
+dn: ou=posix,ou=groups,dc=federez,dc=net
+objectClass: organizationalUnit
+ou: posix
+description: Groupes de comptes POSIX
+
 # Users
 dn: ou=users,dc=federez,dc=net
 objectClass: organizationalUnit
