@@ -38,6 +38,8 @@ case "$role" in
     consumer)
         sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ./migrations/syncrepl/consumer.ldif
         ;;
+    nosync)
+        ;;
     *)
         echo "Error: First argument must be consumer or provider"
         exit 1
