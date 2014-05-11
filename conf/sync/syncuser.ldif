@@ -4,4 +4,4 @@ objectClass: applicationProcess
 objectClass: simpleSecurityObject
 cn: sync
 description: OpenLDAP syncrepl user
-userPassword:: BASE64_ENCODED_PASSWORD
+userPassword: secret

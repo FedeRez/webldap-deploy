@@ -1,42 +1,42 @@
 #!/bin/bash
+set -o nounset
+set -o errexit
 
 role=$1
+ext="-Y EXTERNAL -H ldapi:///"
+admin="-x -D cn=admin,dc=federez,dc=net -W -H ldapi:///"
 
 . ./dist/debian
 
 install_ldap ./dist/debconf
 
-# Uncomment if needed
-#sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ./migrations/dit/base.ldif
+# dc=federez,dc=net
+#sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ./federez.net/base.ldif
+ldapadd $admin -f ./federez.net/ou.ldif
 
-# Migrates the tree
-ldapadd -D "cn=admin,dc=federez,dc=net" -W -H ldapi:/// -f ./migrations/dit/organizational_units.ldif
+# memberof
+sudo ldapmodify $ext -f ./conf/overlay/memberof.ldif
 
-# Migrates overlays
-sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f ./migrations/overlays/memberof.ldif
+# dyngroup
+sudo ldapadd $ext -f /etc/ldap/schema/dyngroup.ldif
+sudo ldapmodify $ext -f ./conf/overlay/dynlist.ldif
 
-# Requires dyngroup.ldif to be installed
-# File can be found at /etc/ldap/schema/dyngroup.ldif (Debian Wheezy)
-sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/dyngroup.ldif
-sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f ./migrations/overlays/dynlist.ldif
+# ppolicy
+sudo ldapadd $ext -f /etc/ldap/schema/ppolicy.ldif
+sudo ldapmodify $ext -f ./conf/overlay/ppolicy.ldif
+ldapmodify $admin -f ./conf/overlay/ppolicy_policies.ldif
 
-# Requires ppolicy.ldif to be installed
-# File can be found at /etc/ldap/schema/ppolicy.ldif (Debian Wheezy)
-sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/ppolicy.ldif
-sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f ./migrations/overlays/ppolicy.ldif
-ldapmodify -D "cn=admin,dc=federez,dc=net" -W -H ldapi:/// -f ./migrations/overlays/ppolicy_policies.ldif
+sudo ldapmodify $ext -f ./conf/overlay/unique.ldif
+sudo ldapmodify $ext -f ./conf/overlay/refint.ldif
 
-sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f ./migrations/overlays/unique.ldif
-sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f ./migrations/overlays/refint.ldif
-
-ldapadd -D "cn=admin,dc=federez,dc=net" -W -H ldapi:/// -f ./migrations/syncrepl/syncuser.ldif
+ldapadd $admin -f ./conf/sync/syncuser.ldif
 
 case "$role" in
     provider)
-        sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ./migrations/syncrepl/provider.ldif
+        sudo ldapadd $ext -f ./conf/sync/provider.ldif
         ;;
     consumer)
-        sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ./migrations/syncrepl/consumer.ldif
+        sudo ldapadd $ext -f ./conf/sync/consumer.ldif
         ;;
     nosync)
         ;;
