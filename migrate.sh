@@ -4,7 +4,7 @@ role=$1
 
 . ./dist/debian
 
-install_ldap
+install_ldap ./dist/debconf
 
 # Uncomment if needed
 #sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ./migrations/dit/base.ldif
