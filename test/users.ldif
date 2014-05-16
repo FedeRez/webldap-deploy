@@ -1,0 +1,21 @@
+dn: uid=john.doe,ou=users,dc=federez,dc=net
+uid: john.doe
+gidNumber: 10001
+givenName: John
+homeDirectory: /home/john
+shadowMax: 99999
+shadowMin: 0
+shadowWarning: 7
+netFederezUID: john
+objectClass: inetOrgPerson
+objectClass: netFederezUser
+objectClass: posixAccount
+objectClass: shadowAccount
+loginShell: /bin/bash
+uidNumber: 10001
+sn: Doe
+displayName: John Doe
+cn: johnny
+mail: john.doe@example.com
+userPassword: secret
+

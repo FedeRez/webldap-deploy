@@ -47,3 +47,5 @@ case "$role" in
         echo "Error: First argument must be consumer or provider"
         exit 1
 esac
+
+ldapadd $admin -f ./test/users.ldif
