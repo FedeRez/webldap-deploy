@@ -14,6 +14,9 @@ install_ldap ./dist/debconf
 #sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ./federez.net/base.ldif
 ldapadd $admin -f ./federez.net/ou.ldif
 
+# netFederez schema
+sudo ldapadd $ext -f ./conf/schema/netfederez.ldif
+
 # memberof
 sudo ldapmodify $ext -f ./conf/overlay/memberof.ldif
 
