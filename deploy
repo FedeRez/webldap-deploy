@@ -49,3 +49,5 @@ case "$role" in
 esac
 
 ldapadd $admin -f ./test/users.ldif
+
+install_webldap "$(pwd)/webldap/local_settings.py"
