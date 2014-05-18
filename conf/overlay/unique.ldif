@@ -1,5 +1,3 @@
-# Overlay: Unique
-
 dn: cn=module{0},cn=config
 changetype: modify
 add: olcModuleLoad

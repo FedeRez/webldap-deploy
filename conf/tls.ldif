@@ -1,5 +1,3 @@
-# Adds SSL/TLS configuration
-
 dn: cn=config
 changetype: modify
 add: olcTLSCACertificateFile

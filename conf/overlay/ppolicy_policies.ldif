@@ -1,6 +1,3 @@
-# Addes password policies to ou=policies,dc=federez,dc=net
-
-# First policy (the only one at the moment)
 dn: cn=passwords,ou=policies,dc=federez,dc=net
 changetype: add
 objectClass: pwdPolicy

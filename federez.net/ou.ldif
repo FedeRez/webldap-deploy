@@ -1,5 +1,3 @@
-# Adds DIT OUs.
-
 # FedeRez associations
 dn: ou=associations,dc=federez,dc=net
 objectClass: organizationalUnit
