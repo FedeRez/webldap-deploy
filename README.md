@@ -1,4 +1,4 @@
 webldap-deploy
 ==============
 
-Deployment scripts and migrations for webldap
+Deployment script and configuration units for FedeRez's OpenLDAP server.
